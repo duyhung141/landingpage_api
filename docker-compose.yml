@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo
+    container_name: mymongo
+    ports:
+      - "27017:27017"
+    networks:
+      - mern-app
+    volumes:
+      - mongodb-data
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: anh_nam-app
+    ports:
+      - "5000:5000"
+    networks:
+      - mern-app
+    volumes:
+      - ./app:/app
+    depends_on:
+      - mongodb
+networks:
+  mern-app:
+    driver: bridge
+volumes:
+  mongodb-data:
+    driver: local
