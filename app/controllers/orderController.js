@@ -12,7 +12,7 @@ exports.createOrder = async (req, res) => {
     const newOrder = new Order({ customer, products, totalPrice, status });
     if(newOrder){
       await writeToGoogleSheets(newData);
-    }https://open.spotify.com/episode/7y1yRWHkG9xSL76i1JaCge
+    }
     const savedOrder = await newOrder.save();
     res.status(201).json(savedOrder);
   } catch (error) {

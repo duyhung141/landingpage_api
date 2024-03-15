@@ -3,8 +3,8 @@ const Product = require('../models/productModel');
 // Controller để tạo một sản phẩm mới
 exports.createProduct = async (req, res) => {
   try {
-    const { name, price, description, category } = req.body;
-    const newProduct = new Product({ name, price, description, category });
+    const { name, price, description, category, percentSale } = req.body;
+    const newProduct = new Product({ name, price, description, category, percentSale });
     const savedProduct = await newProduct.save();
     res.status(201).json(savedProduct);
   } catch (error) {
@@ -43,7 +43,7 @@ exports.getProductById = async (req, res) => {
 exports.updateProductById = async (req, res) => {
   try {
     const productId = req.params.id;
-    const { name, price, description, category } = req.body;
+    const { name, price, description, category, percentSale } = req.body;
     const updatedProduct = await Product.findByIdAndUpdate(
       productId,
       { name, price, description, category },
