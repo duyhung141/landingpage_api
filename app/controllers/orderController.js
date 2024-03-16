@@ -7,7 +7,7 @@ exports.createOrder = async (req, res) => {
   try {
     const { customer, products, totalPrice, status, quantity, phoneCustomer, addressCus } = req.body;
     const findProduct = await Product.findById(products)
-   
+    status = "Pending"
     const newData = [
       [new Date(), customer, findProduct.name,totalPrice, status, quantity, phoneCustomer, addressCus],
       // ["Emily", 35, "Australia"],
