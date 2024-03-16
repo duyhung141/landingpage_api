@@ -4,12 +4,12 @@ const Order = require("../models/orderModel");
 // Controller để tạo một đơn hàng mới
 exports.createOrder = async (req, res) => {
   try {
-    const { customer, products, totalPrice, status } = req.body;
+    const { customer, products, totalPrice, status, quantity, phoneCustomer, addressCus } = req.body;
     const newData = [
-      [customer, products,totalPrice, status],
+      [customer, products,totalPrice, status, quantity, phoneCustomer, addressCus],
       // ["Emily", 35, "Australia"],
     ];
-    const newOrder = new Order({ customer, products, totalPrice, status });
+    const newOrder = new Order({ customer, products, totalPrice, status, quantity, phoneCustomer, addressCus });
     if(newOrder){
       await writeToGoogleSheets(newData);
     }

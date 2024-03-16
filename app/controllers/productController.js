@@ -3,8 +3,8 @@ const Product = require('../models/productModel');
 // Controller để tạo một sản phẩm mới
 exports.createProduct = async (req, res) => {
   try {
-    const { name, price, description, category, percentSale } = req.body;
-    const newProduct = new Product({ name, price, description, category, percentSale });
+    const { name, price, description, category, percentSale, urlList } = req.body;
+    const newProduct = new Product({ name, price, description, category, percentSale, urlList });
     const savedProduct = await newProduct.save();
     res.status(201).json(savedProduct);
   } catch (error) {

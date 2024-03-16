@@ -15,10 +15,10 @@ exports.writeToGoogleSheets = async(data) => {
     const sheets = google.sheets({ version: 'v4', auth: client });
 
     // ID of the Google Sheets document
-    const spreadsheetId = '1Bzha472wd9d4ETxJzAOtz0eOwEOactg958XHQ4JmsiQ';
+    const spreadsheetId = '1nKk-kQMTIuz9EmwxAprVO3eeBheegFzHi28UPh8QKG0';
 
     // Name of the sheet within the Google Sheets document
-    const sheetName = 'Sheet1';
+    const sheetName = 'sheet1';
 
     // Specify the range you want to retrieve existing data from
     const rangeToRetrieve = `${sheetName}!A1:C`;

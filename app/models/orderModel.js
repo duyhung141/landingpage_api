@@ -4,13 +4,11 @@ const mongoose = require('mongoose');
 const orderSchema = new mongoose.Schema({
   customer: {
     type: String,
-    // ref: 'User', // Tham chiếu đến model User
-    // required: true
   },
-  products: [{
-    type: String
-    // ref: 'Product' // Tham chiếu đến model Product
-  }],
+  products: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Product' 
+  },
   totalPrice: {
     type: Number,
     required: true
@@ -23,6 +21,18 @@ const orderSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  quantity:{
+    type: Number,
+    required: true
+  },
+  phoneCustomer:{
+    type: String,
+    required: true
+  },
+  addressCus:{
+      type: String,
+    required: true
   }
 });
 

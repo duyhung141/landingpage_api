@@ -3,18 +3,18 @@ const router = express.Router();
 const productController = require('../controllers/productController');
 
 // Route để tạo một sản phẩm mới
-router.post('/products', productController.createProduct);
+router.post('/', productController.createProduct);
 
 // Route để lấy tất cả sản phẩm
-router.get('/products', productController.getAllProducts);
+router.get('/', productController.getAllProducts);
 
 // Route để lấy một sản phẩm theo ID
-router.get('/products/:id', productController.getProductById);
+router.get('/:id', productController.getProductById);
 
 // Route để cập nhật một sản phẩm theo ID
-router.put('/products/:id', productController.updateProductById);
+router.put('/:id', productController.updateProductById);
 
 // Route để xóa một sản phẩm theo ID
-router.delete('/products/:id', productController.deleteProductById);
+router.delete('/:id', productController.deleteProductById);
 
 module.exports = router;

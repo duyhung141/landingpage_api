@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 // Định nghĩa schema cho model Review
 const reviewSchema = new mongoose.Schema({
   user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // Tham chiếu đến model User
-    required: true
+    // type: mongoose.Schema.Types.ObjectId,
+    // ref: 'User', // Tham chiếu đến model User
+    // required: true
+    type: String,
   },
   product: {
     type: mongoose.Schema.Types.ObjectId,
@@ -22,6 +23,8 @@ const reviewSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  thumbnail:[String],
+  avatar:[String],
   createdAt: {
     type: Date,
     default: Date.now
