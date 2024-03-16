@@ -1,12 +1,15 @@
 const { writeToGoogleSheets } = require("../functions/writeGoogleSheets");
 const Order = require("../models/orderModel");
+const Product = require('../models/productModel');
 
 // Controller để tạo một đơn hàng mới
 exports.createOrder = async (req, res) => {
   try {
     const { customer, products, totalPrice, status, quantity, phoneCustomer, addressCus } = req.body;
+    const findProduct = await Product.findById(products)
+   
     const newData = [
-      [customer, products,totalPrice, status, quantity, phoneCustomer, addressCus],
+      [new Date(), customer, findProduct.name,totalPrice, status, quantity, phoneCustomer, addressCus],
       // ["Emily", 35, "Australia"],
     ];
     const newOrder = new Order({ customer, products, totalPrice, status, quantity, phoneCustomer, addressCus });
@@ -24,7 +27,7 @@ exports.createOrder = async (req, res) => {
 // Controller để lấy tất cả đơn hàng
 exports.getAllOrders = async (req, res) => {
   try {
-    const orders = await Order.find();
+    const orders = await Order.find().populate('products', 'name');;
     res.status(200).json(orders);
   } catch (error) {
     console.error("Error getting all orders:", error);
