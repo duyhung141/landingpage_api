@@ -5,7 +5,7 @@ const Product = require('../models/productModel');
 // Controller để tạo một đơn hàng mới
 exports.createOrder = async (req, res) => {
   try {
-    const { customer, products, totalPrice, status, quantity, phoneCustomer, addressCus } = req.body;
+    let { customer, products, totalPrice, status, quantity, phoneCustomer, addressCus } = req.body;
     const findProduct = await Product.findById(products)
     status = "Pending"
     const newData = [
