@@ -3,8 +3,8 @@ const Review = require('../models/reviewModel');
 // Controller để tạo một đánh giá mới
 exports.createReview = async (req, res) => {
   try {
-    const { user, product, rating, comment } = req.body;
-    const newReview = new Review({ user, product, rating, comment });
+    const { user, product, rating, comment, thumbnail } = req.body;
+    const newReview = new Review({ user, product, rating, comment, thumbnail });
     const savedReview = await newReview.save();
     res.status(201).json(savedReview);
   } catch (error) {
