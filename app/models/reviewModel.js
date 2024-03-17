@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Định nghĩa schema cho model Review
 const reviewSchema = new mongoose.Schema({
@@ -10,28 +10,28 @@ const reviewSchema = new mongoose.Schema({
   },
   product: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Product', // Tham chiếu đến model Product
-    required: true
+    ref: "Product", // Tham chiếu đến model Product
+    required: true,
   },
   rating: {
     type: Number,
     min: 1,
     max: 5,
-    required: true
+    required: true,
   },
   comment: {
     type: String,
-    required: true
+    required: true,
   },
-  thumbnail:[String],
-  avatar:[String],
+  thumbnail: { type: String },
+  avatar: { type: String },
   createdAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 // Tạo model Review từ schema đã định nghĩa
-const Review = mongoose.model('Review', reviewSchema);
+const Review = mongoose.model("Review", reviewSchema);
 
 module.exports = Review;
