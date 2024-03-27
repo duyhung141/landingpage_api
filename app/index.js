@@ -21,6 +21,7 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/product', productRoutes);
 app.use('/api/v1/review', reviewRoutes);
 app.use('/api/v1/order', orderRoutes);
+app.use('/api/v1/review', orderRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log("Server started on port", process.env.PORT);
