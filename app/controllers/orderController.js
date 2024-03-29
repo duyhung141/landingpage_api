@@ -1,7 +1,7 @@
 const { writeToGoogleSheets } = require("../functions/writeGoogleSheets");
 const Order = require("../models/orderModel");
 const Product = require('../models/productModel');
-
+const moment = require('moment')
 // Controller để tạo một đơn hàng mới
 exports.createOrder = async (req, res) => {
   try {
@@ -9,7 +9,7 @@ exports.createOrder = async (req, res) => {
     const findProduct = await Product.findById(products)
     status = "Pending"
     const newData = [
-      [new Date(), customer, findProduct.name,totalPrice, status, quantity, phoneCustomer, addressCus],
+      [moment(new Date()).format('MM/DD/YYYY HH:mm:ss'), customer, findProduct.name,totalPrice, status, quantity, phoneCustomer, addressCus],
       // ["Emily", 35, "Australia"],
     ];
     const newOrder = new Order({ customer, products, totalPrice, status, quantity, phoneCustomer, addressCus });
