@@ -30,7 +30,7 @@ const productSchema = new mongoose.Schema({
 
 productSchema.pre('save', function(next) {
   if (this.price && this.priceSale) {
-    this.percentSale = ((this.price - this.priceSale) / this.price) * 100;
+    this.percentSale = parseInt(((this.price - this.priceSale) / this.price) * 100);
   }
   next();
 });
