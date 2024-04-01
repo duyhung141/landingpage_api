@@ -18,6 +18,9 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  percentSale:{
+    type: Number,
+  },
   category: {
     type: String,
     required: true
@@ -25,7 +28,13 @@ const productSchema = new mongoose.Schema({
   urlList:[]
 });
 
-// Tạo model Product từ schema đã định nghĩa
+productSchema.pre('save', function(next) {
+  if (this.price && this.priceSale) {
+    this.percentSale = ((this.price - this.priceSale) / this.price) * 100;
+  }
+  next();
+});
+
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
